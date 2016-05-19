@@ -1,6 +1,6 @@
 <?php
 
-namespace timschwart\Companies\controllers;
+namespace timschwartz\Companies\controllers;
 
 use Illuminate\Http\Request;
 
