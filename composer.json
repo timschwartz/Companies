@@ -16,7 +16,7 @@
         ],
         "psr-4": {
             "App\\": "app/",
-            "tms\\Companies": "src/"
+            "timschwartz\\Companies\\": "src/"
         }
     }
 }
