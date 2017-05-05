@@ -32,5 +32,10 @@ var companies = $('#companies').DataTable({
                        ], "dom": '<"row"<"col-sm-4"f><"col-sm-4 text-center"i><"col-sm-4"p>>tip',
                        "iDisplayLength": 50,
                        "order": [[ 0, "desc" ]]});
+
+$('#companies tbody').on('click', 'tr', function () {
+ var data = companies.row(this).data();
+ window.location = url+"/"+data[6];
+});
 </script>
 @stop
