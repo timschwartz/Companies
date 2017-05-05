@@ -1,4 +1,4 @@
-@extends({{ $page->layout or "layouts.screen" }})
+@extends("layouts.screen")
 
 @section('content')
   <table id="companies" class="table striped">
