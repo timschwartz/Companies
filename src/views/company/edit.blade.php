@@ -6,7 +6,7 @@
       </div>
       <div class="row">
         <div class="col m6">
-          <a href="/api/v1/company" class="btn blue">Company Index</a>
+          <a href="/companies" class="btn blue">Company Index</a>
         </div>
         <div class="col m2 offset-m3">
           <form method="post" action="/api/v1/company/{{{ $Company->id }}}">
