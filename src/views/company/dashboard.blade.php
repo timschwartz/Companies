@@ -5,10 +5,7 @@
           <h2>Companies</h2>
       </div>
       <div class="row">
-        <div class="col m6">
-            <a href="/api/v1/company" class="btn blue">Company Index</a>
-        </div>
-        <div class="col m6" style="text-align: right;">
+        <div class="col m6 offset-m6" style="text-align: right;">
           <a class="btn blue" href="/api/v1/company/create">New Company</a>
         </div>
       </div>
