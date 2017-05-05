@@ -1,8 +1,8 @@
-@extends("layouts.".$search->format)
+@extends($page->layout or "layouts.screen")
 
 @section("content")
 <?php
-switch($search->format)
+switch($page->format)
 {
     case "json":
         print json_encode($Companies->toArray());

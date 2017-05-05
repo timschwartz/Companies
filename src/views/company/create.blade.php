@@ -1,7 +1,5 @@
 @extends("layouts.screen")
 
-@section("title", "Add company")
-
 @section("content")
       <form method="post" action="/api/v1/company">
         {!! csrf_field() !!}
@@ -29,6 +27,6 @@
             <label for="zip">ZIP</label>
             <input type="text" id="zip" name="zip" placeholder="ZIP" />
         </div>
-        <button type="submit" class="btn">Save</button>
+        <button type="submit" class="btn blue">Save</button>
       </form>
 @stop

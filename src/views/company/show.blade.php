@@ -1,18 +1,16 @@
 @extends("layouts.screen")
 
-@section("title", "Company: ".$Company->name)
-
 @section("content")
         <div class="row">
           <h2>Companies</h2>
         </div>
         <div class="row">
           <div class="col m6">
-            <a href="/api/v1/company" class="btn">Company Index</a>
+            <a href="/api/v1/company" class="btn blue">Company Index</a>
           </div>
           <div class="col m6" style="text-align: right;">
-            <a class="btn" href="/api/v1/company/{{{ $Company->id }}}/edit">Edit</a>
-            <a class="btn" href="#" onclick="alert('Not implemented');">Delete</a>
+            <a class="btn blue" href="/api/v1/company/{{{ $Company->id }}}/edit">Edit</a>
+            <a class="btn red" href="#" onclick="alert('Not implemented');">Delete</a>
           </div>
         </div>
         <div class="row">

@@ -11,6 +11,13 @@ use timschwartz\Companies\models\Company;
 
 class CompanyController extends Controller
 {
+    public function dashboard(Request $request)
+    {
+        $page = new \stdClass;
+        $page->title = "Companies - Tim's Computer Service";
+        return view('company::dashboard', [ 'page'=>$page ]]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,25 +25,17 @@ class CompanyController extends Controller
      */
     public function index(Request $request)
     {
-        $search = new \stdClass;
-        $search->offset = $request->input('offset');
-        if(!$search->offset) $search->offset = 0;
-        
-        $search->limit = $request->input('limit');
-        if(!$search->limit) $search->limit = 10;
+        $Companies = Company::all();
 
-        $search->query = $request->input('search');
-
-        $search->format = $request->input('format');
-        if(!$search->format) $search->format = "screen";
-
-        $Companies = Company::orderBy('name', 'ASC');
-
-        if($search->query) $Companies = $Companies->where('name', 'LIKE', '%'.$search->query.'%');
-
-        $Companies = $Companies->skip($search->offset)->take($search->limit)->get();
-
-        return view('company::index', ['Companies'=>$Companies, 'search'=>$search]);
+        $companies_json = array();
+        foreach($Companies as $Company)
+        {
+            $address = $Company->address;
+            if($Company->address2) $address.="<br />".$Company->address2;
+            $c = array($Company->name, $address, $Company->city, $Company->state, $Company->zip, $Company->id);
+            array_push($companies_json, $c);
+        }
+        print json_encode(["aaData"=>$companies_json]);
     }
 
     /**

@@ -1,27 +1,25 @@
 @extends("layouts.screen")
 
-@section("title", "Company: ".$Company->name)
-
 @section("content")
       <div class="row">
         <h2>Companies</h2>
       </div>
       <div class="row">
         <div class="col m6">
-          <a href="/api/v1/company" class="btn">Company Index</a>
+          <a href="/api/v1/company" class="btn blue">Company Index</a>
         </div>
         <div class="col m2 offset-m3">
           <form method="post" action="/api/v1/company/{{{ $Company->id }}}">
             {!! csrf_field(); !!}
             <input type="hidden" name="_method" value="delete" />
-            <button type="submit" class="btn">Delete</button>
+            <button type="submit" class="btn red">Delete</button>
           </form>
         </div>
         <div class="col m1">
           <form method="post" action="/api/v1/company/{{{ $Company->id }}}" >
               {!! csrf_field(); !!}
               <input type="hidden" name="_method" value="patch" />
-              <button class="btn" type="submit">Save</button>
+              <button class="btn blue" type="submit">Save</button>
         </div>
       </div>
 
