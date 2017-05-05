@@ -35,7 +35,7 @@ var companies = $('#companies').DataTable({
 
 $('#companies tbody').on('click', 'tr', function () {
  var data = companies.row(this).data();
- window.location = url+"/"+data[6];
+ window.location = url+"/"+data[5];
 });
 </script>
 @stop
