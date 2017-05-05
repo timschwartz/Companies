@@ -15,7 +15,7 @@ class CompanyController extends Controller
     {
         $page = new \stdClass;
         $page->title = "Companies - Tim's Computer Service";
-        return view('company::dashboard', [ 'page'=>$page ]]);
+        return view('company::dashboard', [ 'page'=>$page ]);
     }
 
     /**
