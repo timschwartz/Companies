@@ -24,8 +24,7 @@ var companies = $('#companies').DataTable({
                            { title: "Name" },
                            { title: "Address" },
                            { title: "City" },
-                           { title: "State" },
-                           { title: "ZIP" }
+                           { title: "Contacts" }
                        ], "dom": '<"row"<"col-sm-4"f><"col-sm-4 text-center"i><"col-sm-4"p>>tip',
                        "iDisplayLength": 50,
                        "order": [[ 0, "desc" ]]});

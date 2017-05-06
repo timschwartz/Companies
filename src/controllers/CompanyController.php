@@ -30,9 +30,10 @@ class CompanyController extends Controller
         $companies_json = array();
         foreach($Companies as $Company)
         {
+            $employees = $Company->employees()->get();
             $address = $Company->address;
             if($Company->address2) $address.="<br />".$Company->address2;
-            $c = array($Company->name, $address, $Company->city, $Company->state, $Company->zip, $Company->id);
+            $c = array($Company->name, $address, $Company->city, $Company->state, count($employees), $Company->id);
             array_push($companies_json, $c);
         }
         print json_encode(["aaData"=>$companies_json]);
@@ -77,7 +78,9 @@ class CompanyController extends Controller
     public function show($id)
     {
         $Company = Company::find($id);
-        return view("company::show", ['Company'=>$Company]);
+        $employees = $Company->employees()->get();
+        $phones = $Company->phones()->get();
+        return view("company::show", ['Company'=>$Company, 'employees'=>$employees]);
     }
 
     /**

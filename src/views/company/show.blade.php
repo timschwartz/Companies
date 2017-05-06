@@ -20,27 +20,30 @@
           </div>
         </div>
         <div class="row">
-            <label for="name">Company name</label>
-            <input type="text" id="name" name="name" value="{{{ $Company->name }}}" readonly />
+            <h4>{{{ $Company->name }}}</h4>
         </div>
         <div class="row">
-            <label for="address">Address</label>
-            <input type="text" id="address" name="address" value="{{{ $Company->address }}}" readonly />
+            {{{ $Company->address }}}<br />
+            {{{ $Company->address2 }}}<br />
+            {{{ $Company->city }}}, {{{ $Company->state }}} {{{ $Company->zip }}}
         </div>
         <div class="row">
-            <label for="address2">Address 2</label>
-            <input type="text" id="address2" name="address2" value="{{{ $Company->address2 }}}" readonly />
+            <iframe src="//www.google.com/maps/embed/v1/place?q={{{ $Company->address }}} {{{ $Company->address2 }}} {{{ $Company->city }}} {{{ $Company->state }}}&zoom=17&key=AIzaSyCTdPxXwY4QoKT1q99sE09Hw2ECbX46ECg">
+            </iframe>
         </div>
+  @if(isset($employees))
         <div class="row">
-            <label for="city">City</label>
-            <input type="text" id="city" name="city" value="{{{ $Company->city }}}" readonly />
+            <h5>Employees</h5>
         </div>
+  @endif
+  @foreach($employees as $employee)
         <div class="row">
-            <label for="state">State</label>
-            <input type="text" id="state" name="state" value="{{{ $Company->state }}}" readonly />
+          <div class="col s3">
+            {{{ $employee->given_name }}} {{{ $employee->surname }}}
+          </div>
+          <div class="col s3">
+            {{{ $employee->email }}}
+          </div>
         </div>
-        <div class="row">
-            <label for="zip">ZIP</label>
-            <input type="text" id="zip" name="zip" value="{{{ $Company->zip }}}" readonly />
-        </div>
+  @endforeach
 @stop
