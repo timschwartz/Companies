@@ -15,7 +15,7 @@ class Company extends Model
 
     public function phones()
     {
-        return $this->belongsToMany('timschwartz\Phone', 'timschwartz_company_phone');
+        return $this->belongsToMany('timschwartz\Companies\models\Phone', 'timschwartz_company_phone');
     }
 
 }
