@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Collection;
 
 class Phone extends Model
 {
+    protected $table = 'timschwartz_phones';
+
     public function people()
     {
         return $this->belongsToMany('App\User', 'timschwartz_user_phone');
