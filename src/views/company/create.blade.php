@@ -1,6 +1,18 @@
 @extends("layouts.screen")
 
 @section("content")
+        <div class="row">
+          <h2>Companies</h2>
+        </div>
+        <div class="row">
+          <div class="col m6">
+            <a href="/companies" class="btn blue">Company Index</a>
+          </div>
+          <div class="col m1 offset-m5">
+            <button type="submit" class="btn blue">Save</button>
+          </div>
+        </div>
+
       <form method="post" action="/api/v1/company">
         {!! csrf_field() !!}
         <div class="row">
@@ -27,6 +39,10 @@
             <label for="zip">ZIP</label>
             <input type="text" id="zip" name="zip" placeholder="ZIP" />
         </div>
-        <button type="submit" class="btn blue">Save</button>
+        <div class="row">
+          <div class="col m1 offset-m11">
+            <button type="submit" class="btn blue">Save</button>
+          </div>
+        </div>
       </form>
 @stop

@@ -8,9 +8,15 @@
           <div class="col m6">
             <a href="/companies" class="btn blue">Company Index</a>
           </div>
-          <div class="col m6" style="text-align: right;">
+          <div class="col m2 offset-m3">
+            <form method="post" action="/api/v1/company/{{{ $Company->id }}}">
+              {!! csrf_field(); !!}
+              <input type="hidden" name="_method" value="delete" />
+              <button type="submit" class="btn red">Delete</button>
+            </form>
+          </div>
+          <div class="col m1">
             <a class="btn blue" href="/api/v1/company/{{{ $Company->id }}}/edit">Edit</a>
-            <a class="btn red" href="#" onclick="alert('Not implemented');">Delete</a>
           </div>
         </div>
         <div class="row">
