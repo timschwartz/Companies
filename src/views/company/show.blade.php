@@ -28,7 +28,7 @@
             {{{ $Company->address2 }}}<br />
             {{{ $Company->city }}}, {{{ $Company->state }}} {{{ $Company->zip }}}
           </div>
-          <div class="s4 offset-s2">
+          <div class="col s4 offset-s2">
   @foreach($company_phones as $phone)
             <button type="button" class="btn green" onclick="alert('Dialing is not implemented');">Dial {{{ $phone->number }}}</button>
   @endforeach

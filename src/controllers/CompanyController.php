@@ -77,9 +77,17 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
+        $phoneUtil = \libphonenumber\PhoneNumberUtil::getInstance();
+
         $Company = Company::find($id);
         $employees = $Company->employees()->get();
         $company_phones = $Company->phones()->get();
+        foreach($company_phones as $k=>$phone)
+        {
+            $number = $phoneUtil->parse($phone->number, "US");
+            $phone->number = $phoneUtil->format($number, \libphonenumber\PhoneNumberFormat::NATIONAL);
+            
+        }
         return view("company::show", ['Company'=>$Company, 'employees'=>$employees, 'company_phones'=>$company_phones]);
     }
 
