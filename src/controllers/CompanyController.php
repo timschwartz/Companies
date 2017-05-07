@@ -79,8 +79,8 @@ class CompanyController extends Controller
     {
         $Company = Company::find($id);
         $employees = $Company->employees()->get();
-        $phones = $Company->phones()->get();
-        return view("company::show", ['Company'=>$Company, 'employees'=>$employees]);
+        $company_phones = $Company->phones()->get();
+        return view("company::show", ['Company'=>$Company, 'employees'=>$employees, 'company_phones'=>$company_phones]);
     }
 
     /**

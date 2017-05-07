@@ -23,12 +23,19 @@
             <h4>{{{ $Company->name }}}</h4>
         </div>
         <div class="row">
+          <div class="col s4">
             {{{ $Company->address }}}<br />
             {{{ $Company->address2 }}}<br />
             {{{ $Company->city }}}, {{{ $Company->state }}} {{{ $Company->zip }}}
+          </div>
+          <div class="s4 offset-s2">
+  @foreach($company_phones as $phone)
+            <button type="button" class="btn green" onclick="alert('Dialing is not implemented');">Dial {{{ $phone->number }}}</button>
+  @endforeach
+          </div>
         </div>
         <div class="row">
-            <iframe src="//www.google.com/maps/embed/v1/place?q={{{ $Company->address }}} {{{ $Company->address2 }}} {{{ $Company->city }}} {{{ $Company->state }}}&zoom=17&key=AIzaSyCTdPxXwY4QoKT1q99sE09Hw2ECbX46ECg">
+            <iframe src="//www.google.com/maps/embed/v1/place?q={{{ $Company->address }}} {{{ $Company->city }}} {{{ $Company->state }}}&zoom=17&key=AIzaSyCTdPxXwY4QoKT1q99sE09Hw2ECbX46ECg">
             </iframe>
         </div>
   @if(isset($employees))
