@@ -11,6 +11,8 @@ use timschwartz\Companies\models\Company;
 
 class CompanyController extends Controller
 {
+    public $target = "companies";
+
     public function dashboard(Request $request)
     {
         $page = new \stdClass;
@@ -82,11 +84,22 @@ class CompanyController extends Controller
         $Company = Company::find($id);
         $employees = $Company->employees()->get();
         $company_phones = $Company->phones()->get();
+
         foreach($company_phones as $k=>$phone)
         {
             $number = $phoneUtil->parse($phone->number, "US");
-            $phone->number = $phoneUtil->format($number, \libphonenumber\PhoneNumberFormat::NATIONAL);
-            
+            $phone->number = $phoneUtil->format($number, \libphonenumber\PhoneNumberFormat::NATIONAL);   
+        }
+
+        foreach($employees as $k=>$employee)
+        {
+            $employee_phones = $employee->phones()->get();
+            foreach($employee_phones as $k=>$phone)
+            {
+                $number = $phoneUtil->parse($phone->number, "US");
+                $phone->number = $phoneUtil->format($number, \libphonenumber\PhoneNumberFormat::NATIONAL);
+            }
+            $employee->phones = $employee_phones;
         }
         return view("company::show", ['Company'=>$Company, 'employees'=>$employees, 'company_phones'=>$company_phones]);
     }

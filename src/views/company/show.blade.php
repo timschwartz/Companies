@@ -51,6 +51,27 @@
           <div class="col s3">
             {{{ $employee->email }}}
           </div>
+          <div class="col s6">
+    @foreach($employee->phones as $phone)
+            <div class="row">
+              <div class="col s4 offset-s1">
+                {{{ $phone->number }}}
+              </div>
+              <div class="col s3">
+                <button type="button" class="btn green" onclick="alert('Dialing is not implemented');">
+                  Dial
+                </button>
+              </div>
+      @if($phone->sms || $phone->mms)
+              <div class="col s3">
+                <button type="button" class="btn green" onclick="alert('Texting is not implemented');">
+                  Text
+                </button>
+              </div>
+      @endif
+            </div>
+    @endforeach
+          </div>
         </div>
   @endforeach
 @stop
